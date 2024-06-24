@@ -1,0 +1,20 @@
+version: '3'
+services:
+  api:
+    image: exekaliburr-api
+    build:
+      context: api
+      dockerfile: Dockerfile
+    network_mode: "host"
+    security_opt:
+      - no-new-privileges:true
+    privileged: true
+  front:
+    image: exekaliburr-front
+    build:
+      context: front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    security_opt:
+      - no-new-privileges:true
